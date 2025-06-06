@@ -1,61 +1,56 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <title>Discord Team Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background: #0e0e0e;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      color: #00ffff;
-      text-align: center;
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background: #1a1a1a;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #00ffff33;
-      text-align: center;
-    }
-    .status {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-    .status.online { color: #00ff88; }
-    .status.afk { color: #ffaa00; }
-    .status.offline { color: #ff4444; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Team anzeigen
+      const teamContainer = document.getElementById("team");
+      team.forEach(member => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `<h3>${member.name}</h3><div class="status ${member.status.toLowerCase()}">${member.statusEmoji} ${member.status}</div>`;
+        teamContainer.appendChild(div);
+      });
+
+      // Ankündigungen
+      const newsList = document.getElementById("news");
+      announcements.forEach(text => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        newsList.appendChild(li);
+      });
+
+      // Termine
+      const eventsList = document.getElementById("events");
+      events.forEach(ev => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${ev.date}:</strong> ${ev.title}`;
+        eventsList.appendChild(li);
+      });
+    });
+  </script>
 </head>
 <body>
-  <h1>Teamübersicht – Varo 5</h1>
+  <h1>Team Dashboard – Varo 5</h1>
 
-  <div class="team-grid">
-    <div class="card">
-      <h3>Marlon</h3>
-      <div class="status online">🟢 Aktiv</div>
-    </div>
-    <div class="card">
-      <h3>CoolyGoon</h3>
-      <div class="status afk">🟠 AFK</div>
-    </div>
-    <div class="card">
-      <h3>Mats</h3>
-      <div class="status offline">🔴 Offline</div>
-    </div>
-  </div>
+  <section>
+    <h2>📣 Ankündigungen</h2>
+    <ul id="news"></ul>
+  </section>
+
+  <section>
+    <h2>📅 Termine & Events</h2>
+    <ul id="events"></ul>
+  </section>
+
+  <section>
+    <h2>👥 Team</h2>
+    <div id="team" class="team-grid"></div>
+  </section>
 </body>
 </html>
-
