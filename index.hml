@@ -1,1 +1,61 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Discord Team Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffff;
+      text-align: center;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffff33;
+      text-align: center;
+    }
+    .status {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .status.online { color: #00ff88; }
+    .status.afk { color: #ffaa00; }
+    .status.offline { color: #ff4444; }
+  </style>
+</head>
+<body>
+  <h1>Teamübersicht – Varo 5</h1>
+
+  <div class="team-grid">
+    <div class="card">
+      <h3>Marlon</h3>
+      <div class="status online">🟢 Aktiv</div>
+    </div>
+    <div class="card">
+      <h3>CoolyGoon</h3>
+      <div class="status afk">🟠 AFK</div>
+    </div>
+    <div class="card">
+      <h3>Mats</h3>
+      <div class="status offline">🔴 Offline</div>
+    </div>
+  </div>
+</body>
+</html>
 
